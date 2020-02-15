@@ -4,19 +4,25 @@
     <meta charset="utf-8" />
     <title>Tank</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div>
-        <button class="ret" onclick="document.location.reload()">Обновить</button>
+    <div class="wrapper">
+    <div class="nav1">
+        
         <a class="new" href="troll.html">        <button class="but">Выбор легкого троля</button></a>
         <a class="new"href="boss.html">        <button class="but">Выбор босса</button></a>
         <a class="new" href="#">        <button class="but" onclick="error()">Выбор ведьмы</button></a>
+        <div class="new"><button class="but ret" onclick="document.location.reload()">Обновить</button></div>
     </div>
     <div id="HP"></div>
     <div id="MP"></div>
     <div class="image">
-        <img src="images/gente.jpg" class='gente'>         <div id="game">Вот вы и встретелись! <br> Правила: <br> 1) У вас на выбор 2 действия "атака" и "блок" <br> 2) Кнопка "обновить" начинает бой сначала <br> 3) Убейте врага!</div>
-        <div id="gameMag"></div>
+        <img src="images/gente.jpg" class='gente'>         
+        <div>
+            <div id="game">Вот вы и встретелись с тролем! <br> Правила: <br> 1) У вас на выбор 2 действия "атака" и "блок" <br> 2) Кнопка "обновить" начинает бой сначала <br> 3) Убейте троля </div>
+            <div id="gameMag"></div>
+        </div>
         <img src="images/Tank.jpg" class='troll'>
     </div>
     <div class="panel">
@@ -30,6 +36,7 @@
         <div id="infoMagic"></div>
         <div id="infoMagic1"></div>
         </div>
+    </div>
         <script src="tank.js"></script>
 </body>
 </html>

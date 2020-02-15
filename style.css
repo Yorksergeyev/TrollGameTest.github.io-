@@ -2,6 +2,11 @@ body {
     margin: 0;
 }
 
+.wrapper{
+    width: 1200px;
+    margin: 0 auto;
+}
+
 #HP {
     text-align: center;
 }
@@ -15,17 +20,28 @@ body {
 }
 
 .image {
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 .troll {
-    display: inline-block;
-    margin-left: 10%;
+    margin-left: 50px;
     width: 300px;
 }
 
+#game {
+    margin-top: 7em;
+    text-align: center;
+    
+}
+
+#gameMag {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 20px;
+}
 .gente {
-    display: inline-block;
-    margin-right: 10%;
+    margin-right: 50px;
     width: 300px;
 }
 
@@ -45,50 +61,22 @@ body {
     color: azure;
 }
 
-#game {
-    border: solid transparent;
-    right: 40%;
-    display: inline-block;
-    position: absolute;
-    right: 45%%;
-    left: 40%;
-    top: 20%;
-    
-}
-
-#gameMag {
-    border: solid transparent;
-    right: 40%;
-    display: inline-block;
-    position: absolute;
-    right: 45%%;
-    left: 40%;
-    top: 25%;
-    
-}
 
 .nav1 {
+    display: flex;
+    flex-direction: row;
     font-size: 14px;
     text-transform: uppercase;
+    margin-left: 150px;
 }
 
+
 .ret {
-    position: absolute;
-    left: 80%;
-    top: 10px;
-    background-color: burlywood;
-    border-radius: 20px;
+    margin-left: 450px;
 }
 
 .new {
-    display: inline-block;
-    vertical-align: top;
     margin: 10px;
-    position: relative;
-    
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.2s linear;
 }
 
 .ret:hover {
