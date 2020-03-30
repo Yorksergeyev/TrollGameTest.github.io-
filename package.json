@@ -1,0 +1,18 @@
+{
+  "name": "yes",
+  "version": "1.0.0",
+  "description": "game",
+  "main": "bot.js",
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "underscore": "^1.10.1",
+    "webpack": "^4.42.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "Hello",
+    "build": "webpack" 
+  },
+  "author": "",
+  "license": "ISC"
+}
