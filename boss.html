@@ -10,7 +10,7 @@
 <body>
     <div class="wrapper">
     <div class="nav1">
-        <a class="new" href="index.html">        <button class="but">Выбор легкого троля</button></a>
+        <a class="new" href="index.html">        <button class="but">Выбор троля</button></a>
         <a class="new" href="tank.html">        <button class="but">Выбор танка</button></a>
         <a class="new" href="#">        <button class="but" onclick="error()">Выбор ведьмы</button></a>
         <div class="new"><button class="but ret" onclick="document.location.reload()">Обновить</button></div>
@@ -18,12 +18,14 @@
     <div id="HP"></div>
     <div id="MP"></div>
     <div class="image">
-        <img src="images/gente.jpg" class='gente'>         
+        <img src="images/gente.jpg" class='gente'> 
+        <img src="images/dead.jpg" class='dead_g'>       
         <div style="width: 400px;">
-            <div id="game">Вот вы и встретелись с тролем! <br> Правила: <br> 1) У вас на выбор 2 действия "атака" и "блок" <br> 2) Кнопка "обновить" начинает бой сначала <br> 3) Убейте троля </div>
+            <div id="game">Вы заметили <strong>орка</strong>! <br> <button class="but" id="start" style="margin-top: 20px;">Начать бой</button> </div>
             <div id="gameMag"></div>
         </div>
         <img src="images/TrolBoss.jpg" class='troll'>
+        <img src="images/dead.jpg" class='dead_t'>
     </div>
     <div class="panel">
         <button class="but" id="ataka">Атака</button>
@@ -36,10 +38,6 @@
             <button class="but" id="fire">Огонь</button> 
             <button class="but" id="anti">Антимагия</button>
         </div>
-        <div id="panelMagic"></div>
-        <div id="infoMagic2"></div>
-        <div id="infoMagic"></div>
-        <div id="infoMagic1"></div>
         </div>
     </div>
         <script src="./dist/boss.bundle.js"></script>

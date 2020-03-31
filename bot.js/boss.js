@@ -1,5 +1,7 @@
+let HP_TR = [350, 400, 450, 500, 550,600];
+
 let i = 300;
-let i1 = 600;
+let i1 = HP_TR[Math.floor(Math.random() * HP_TR.length)];
 let m = 100;
 let m1 = 0;
 let game = document.getElementById('game');
@@ -14,30 +16,62 @@ let MP = document.getElementById('MP');
 
 function HPMP() {
 
-    HP.innerHTML = ('<a class="HPMP"> У вас '+ i +' жизней </a> <a class="HPMP"> У троля '+ i1+' жизней </a>');
-    MP.innerHTML = ('<a class="HPMP"> У вас '+ m +' маны &nbsp;&nbsp;</a> <a class="HPMP"> У троля '+ m1+' маны </a>');
+    HP.innerHTML = ('<a class="HPMP"> У вас <strong>'+ i +'</strong> жизней </a> <a class="HPMP"> У орка <strong>'+ i1+'</strong> жизней </a>');
+    MP.innerHTML = ('<a class="HPMP"> У вас <strong>'+ m +'</strong> маны &nbsp;&nbsp;</a> <a class="HPMP"> У орка <strong>'+ m1+'</strong> маны </a>');
 }
 
+HPMP();
+
+document.getElementById('start').onclick = function(){
+
+    document.querySelector('.panel').style.display = 'flex';
+    document.getElementById('start').style.display = 'none';
+    if (i1 <= 400){
+        game.innerHTML = ('Вы вступили в бой со слабым орком! <br> Но врятли Вас это спасет!');
+    }
+    if ( i1 <= 500 && i1 > 400){
+        game.innerHTML = ('Вы вступили в бой с орком! <br> Попробуй не умеретеь очень быстро!');
+    }
+    if (i1 >= 550){
+        game.innerHTML = ('Вы вступили в бой с главарем орков! <br> Невозможно!');
+    }
+    
 
 function final() {
+    let dead = ('<button class="but" onclick="document.location.reload()">Начать заного</button>');
         if (i<=0) {
         let g = ('Вы убиты');
-        game.innerHTML = g
+        document.querySelector('.gente').style.display = 'none';
+        document.querySelector('.dead_g').style.display = 'block';
+        document.querySelector('.panel').style.display = 'none';
+        document.querySelector('.panelMagic').style.display = 'none';
+        game.innerHTML = g;
+        gameMag.innerHTML = dead;
         if (i1<=0) {
+            document.querySelector('.gente').style.display = 'none';
+            document.querySelector('.dead_g').style.display = 'block';
+            document.querySelector('.troll').style.display = 'none';
+            document.querySelector('.dead_g').style.display = 'block';
+            document.querySelector('.panel').style.display = 'none';
+            document.querySelector('.panelMagic').style.display = 'none';
             game.innerHTML = ('Вы оба погибли')
-            gameMag.innerHTML = ('');
+            gameMag.innerHTML = dead;
             }
         }
     else if (i1<=0) {
-        let g = ('Троль убит');
-        game.innerHTML = g
-        gameMag.innerHTML = ('');         
+        let g = ('Орк убит');
+        document.querySelector('.troll').style.display = 'none';
+        document.querySelector('.dead_t').style.display = 'block';
+        document.querySelector('.panel').style.display = 'none';
+        document.querySelector('.panelMagic').style.display = 'none';
+        game.innerHTML = g;
+        gameMag.innerHTML = dead;         
 }
 }
 
 HPMP();
         
-document.getElementById('ataka').onclick = function ataka() {
+document.getElementById('ataka').onclick = function () {
     if (i>0 && i1>0) {
         let r = Math.random();
         if (r>=0.75) {
@@ -46,14 +80,14 @@ document.getElementById('ataka').onclick = function ataka() {
                 if (z>z1){
                     i1 -= z
                     HPMP();
-                    game.innerHTML = ('Пробив защиту троля вы нанесли '+z+' урона');
+                    game.innerHTML = ('Пробив защиту орка вы нанесли '+z+' урона');
                     gameMag.innerHTML = ('');
                     
                 }
                 else if (z<=z1){
                     i -= z
                     HPMP();
-                    game.innerHTML = ('Троль блокировал '+z+' урона');
+                    game.innerHTML = ('Орк блокировал '+z+' урона');
                     gameMag.innerHTML = ('');
                 }
         }
@@ -63,55 +97,57 @@ document.getElementById('ataka').onclick = function ataka() {
             i -= z
             i1 -= z1
             HPMP();
-            game.innerHTML = ('Вы нанесли ' +z1+ ' урона тролю <br> <br> Вам нанесли '+z+ ' урона'); 
+            game.innerHTML = ('Вы нанесли ' +z1+ ' урона орку <br> <br> Вам нанесли '+z+ ' урона'); 
             gameMag.innerHTML = ('');
-    }
-        }
+    };
+        };
     
     final()
             
-     }
+     };
 
-     document.getElementById('block').onclick = function block() {
-    if (i>0 && i1>0) {
-        let r = Math.random();
-        if (r>=0.05) {
-            let z = Math.ceil(Math.random() * 100);
-            let z1 = Math.ceil(Math.random() * 90);
-                if ( z>z1) {
-                i -= z
-                HPMP();
-                gameMag.innerHTML = ('');
-                game.innerHTML = ('Троль пробив блок нанес '+z+' урона');
-            }
-                else {
-                i1 -= z
-                HPMP();
-                gameMag.innerHTML = ('');
-                game.innerHTML = ('Вы блокировали '+z+' урона');
-            }
-    }
+     function block(){
+         if (i>0 && i1>0) {
+             let r = Math.random();
+             if (r>=0.05) {
+                 let z = Math.ceil(Math.random() * 100);
+                 let z1 = Math.ceil(Math.random() * 90);
+                     if ( z>z1) {
+                     i -= z
+                     HPMP();
+                     gameMag.innerHTML = ('');
+                     game.innerHTML = ('Орк пробив блок нанес '+z+' урона');
+                 }
+                     else {
+                     i1 -= z
+                     HPMP();
+                     gameMag.innerHTML = ('');
+                     game.innerHTML = ('Вы блокировали '+z+' урона');
+                 }
+         }
+     
+             else if (r<0.05) {
+                 gameMag.innerHTML = ('');
+                 game.innerHTML = ('Орк и вы заняли оборонительные стойки');
+             }
+         
+         final()
+         }
+                 
 
-        else if (r<0.05) {
-            gameMag.innerHTML = ('');
-            game.innerHTML = ('Троль и вы заняли оборонительные стойки');
-        }
-    
-    final()
-    }
-            
-     }
+     };
+
+     document.getElementById('block').onclick = function () {
+        block();
+     };
 
     document.getElementById('magic').onclick = function magic() {
     if (i>0 && i1>0 && m>0) {
             document.querySelector('.but_mag').style.display = 'flex';
-            infoMagic.innerHTML =  ('<div><a class="inf"> Верятность срабатывания: 70%</a> <a class="inf"> Верятность срабатывания: 70% </a></div>')
-            infoMagic1.innerHTML = ('<div><a class="inf">  Сила 25-75 </a> <a class="inf"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Сила 100-200 </a></div>')
-            infoMagic2.innerHTML = ('<div><a class="inf"> Требует маны: 50 </a> <a class="inf">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Требует маны: 100 </a></div>')
             let z = Math.ceil(Math.random() * 80);
             i -= z
             HPMP();
-            game.innerHTML = ('Вы открыли книгу магии <p> Воспользовавшись этим троль нанес '+z+ ' урона'); 
+            game.innerHTML = ('Вы открыли книгу магии <p> Воспользовавшись этим орк нанес '+z+ ' урона'); 
             document.getElementById('magic').hidden = true;
         
         }
@@ -152,7 +188,7 @@ document.getElementById('fire').onclick = function fire() {
                 m -= 100
                 HPMP();
                 block();
-                gameMag.innerHTML = ('Удачно! Огненым шаром вы нанесли ' +z+ ' урона тролю');
+                gameMag.innerHTML = ('Удачно! Огненым шаром вы нанесли ' +z+ ' урона орку');
                 }
             else {
                 let z = Math.ceil(Math.random() * (200-100) + 100);
@@ -208,4 +244,4 @@ document.getElementById('fire').onclick = function fire() {
 function error() {
     alert('В разработке!');
 }
-
+}

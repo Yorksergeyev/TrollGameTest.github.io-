@@ -1,5 +1,7 @@
+let HP_TR = [150, 200, 250, 300, 350,400];
+
 let i = 300;
-let i1 = 300;
+let i1 = HP_TR[Math.floor(Math.random() * HP_TR.length)];
 let m = 100;
 let m1 = 100;
 let game = document.getElementById('game');
@@ -10,32 +12,63 @@ let infoMagic1 = document.getElementById('infoMagic1');
 let infoMagic2 = document.getElementById('infoMagic2');
 let HP = document.getElementById('HP');
 let MP = document.getElementById('MP');
+
 function HPMP() {
 
     HP.innerHTML = ('<a class="HPMP"> У вас <strong>'+ i +'</strong> жизней </a> <a class="HPMP"> У троля <strong>'+ i1+'</strong> жизней </a>');
     MP.innerHTML = ('<a class="HPMP"> У вас <strong>'+ m +'</strong> маны &nbsp;&nbsp;</a> <a class="HPMP"> У троля <strong>'+ m1+'</strong> маны </a>');
 }
+HPMP();
 
+document.getElementById('start').onclick = function(){
+
+document.querySelector('.panel').style.display = 'flex';
+document.getElementById('start').style.display = 'none';
+if (i1 <= 200){
+    game.innerHTML = ('Вы вступили в бой со слабым троллем! <br> И ты правда будешь его бить?!');
+}
+if ( i1 <= 300 && i1 > 200){
+    game.innerHTML = ('Вы вступили в бой с троллем! <br> Удачи!');
+}
+if (i1 >= 350){
+    game.innerHTML = ('Вы вступили в бой с сильным троллем! <br> Не обижайся если не получиться с первой попытки!');
+}
 
 function final() {
+    let dead = ('<button class="but" onclick="document.location.reload()">Начать заного</button>');
         if (i<=0) {
         let g = ('Вы убиты');
-        game.innerHTML = g
+        document.querySelector('.gente').style.display = 'none';
+        document.querySelector('.dead_g').style.display = 'block';
+        document.querySelector('.panel').style.display = 'none';
+        document.querySelector('.panelMagic').style.display = 'none';
+        game.innerHTML = g;
+        gameMag.innerHTML = dead;
         if (i1<=0) {
+            document.querySelector('.gente').style.display = 'none';
+            document.querySelector('.dead_g').style.display = 'block';
+            document.querySelector('.troll').style.display = 'none';
+            document.querySelector('.dead_g').style.display = 'block';
+            document.querySelector('.panel').style.display = 'none';
+            document.querySelector('.panelMagic').style.display = 'none';
             game.innerHTML = ('Вы оба погибли')
-            gameMag.innerHTML = ('');
+            gameMag.innerHTML = dead;
             }
         }
     else if (i1<=0) {
         let g = ('Троль убит');
-        game.innerHTML = g
-        gameMag.innerHTML = ('');         
+        document.querySelector('.troll').style.display = 'none';
+        document.querySelector('.dead_t').style.display = 'block';
+        document.querySelector('.panel').style.display = 'none';
+        document.querySelector('.panelMagic').style.display = 'none';
+        game.innerHTML = g;
+        gameMag.innerHTML = dead;         
 }
 }
 
 HPMP();
         
-document.getElementById('ataka').onclick = function ataka() {
+document.getElementById('ataka').onclick = function() {
     if (i>0 && i1>0) {
         let r = Math.random();
         let r1 = Math.random();
@@ -69,53 +102,56 @@ document.getElementById('ataka').onclick = function ataka() {
     
     final()
             
-     }
+     };
 
-     document.getElementById('block').onclick = function block() {
-    if (i>0 && i1>0) {
-        let r = Math.random();
-        if (r>=0.1) {
-            let z = Math.ceil(Math.random() * 100);
-            let z1 = Math.ceil(Math.random() * 100);
-                if ( z>z1) {
-                i -= z
-                HPMP();
-                gameMag.innerHTML = ('');
-                game.innerHTML = ('Троль пробив блок нанес <strong>'+z+'</strong> урона');
-            }
-                else {
-                i1 -= z
-                HPMP();
-                gameMag.innerHTML = ('');
-                game.innerHTML = ('Вы блокировали <strong>'+z+'</strong> урона');
-            }
-    }
-
-        else if (r<0.1) {
-            gameMag.innerHTML = ('');
-            game.innerHTML = ('Троль и вы заняли оборонительные стойки');
+     function block(){
+        if (i>0 && i1>0) {
+            let r = Math.random();
+            if (r>=0.1) {
+                let z = Math.ceil(Math.random() * 100);
+                let z1 = Math.ceil(Math.random() * 100);
+                    if ( z>z1) {
+                    i -= z
+                    HPMP();
+                    gameMag.innerHTML = ('');
+                    game.innerHTML = ('Троль пробив блок нанес <strong>'+z+'</strong> урона');
+                }
+                    else {
+                    i1 -= z
+                    HPMP();
+                    gameMag.innerHTML = ('');
+                    game.innerHTML = ('Вы блокировали <strong>'+z+'</strong> урона');
+                }
         }
     
-    final()
-    }
-            
-     }
+            else if (r<0.1) {
+                gameMag.innerHTML = ('');
+                game.innerHTML = ('Троль и вы заняли оборонительные стойки');
+            }
+        
+        final()
+        }
+     };
 
-     document.getElementById('magic').onclick = function magic() {
+     document.getElementById('block').onclick = function() {
+        block(); 
+     };
+
+
+     document.getElementById('magic').onclick = function () {
     if (i>0 && i1>0 && m>0 && m1>0) {
             document.querySelector('.but_mag').style.display = 'flex';
-            infoMagic.innerHTML =  ('<div><a class="inf"> Верятность срабатывания: 50%</a> <a class="inf"> Верятность срабатывания: 30% </a></div>')
-            infoMagic1.innerHTML = ('<div><a class="inf">  Сила 1-50 </a> <a class="inf"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Сила 50-150 </a></div>')
-            infoMagic2.innerHTML = ('<div><a class="inf"> Требует маны: 50 </a> <a class="inf">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Требует маны: 100 </a></div>')
             let z = Math.ceil(Math.random() * 50);
             i -= z
             HPMP();
             game.innerHTML = ('Вы открыли книгу магии <p> Воспользовавшись этим троль нанес <strong>'+z+ ' </strong> урона'); 
-            document.getElementById('magic').hidden = true;
+            document.getElementById('magic').hidden = true; 
         
-        }
+        };
         
-    }
+    };
+
+
 
     document.getElementById('heal').onclick = function heal() {
     if (m>49) {
@@ -206,5 +242,7 @@ document.getElementById('fire').onclick = function fire() {
 
 function error() {
     alert('В разработке!');
+}
+
 }
 

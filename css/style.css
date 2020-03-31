@@ -35,6 +35,17 @@ body {
     width: 300px;
 }
 
+.dead_g {
+    margin-right: 50px;
+    width: 300px;
+    display: none;
+}
+.dead_t {
+    margin-left: 50px;
+    width: 300px;
+    display: none;
+}
+
 #game {
     margin-top: 7em;
     text-align: center;
@@ -52,9 +63,10 @@ body {
     width: 300px;
 }
 
+
 .panel {
-    margin-top: auto;
-    margin-bottom: auto;
+    display: none;
+    justify-content: center;
     text-align: center;
 }
 
@@ -115,6 +127,8 @@ body {
 .inf {
     margin: 100px;
 }
+
+
 
 
 

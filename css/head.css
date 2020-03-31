@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+}
+
+#HP {
+    text-align: center;
+}
+
+#MP {
+    text-align: center;
+}
+
+.HPMP {
+    margin: 5%;
+}
+
+.image {
+    text-align: center;
+}
+.troll {
+    display: inline-block;
+    margin-left: 10%;
+    width: 300px;
+}
+
+.gente {
+    display: inline-block;
+    margin-right: 10%;
+    width: 300px;
+}
+
+.panel {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+}
+
+.but {
+    padding: 6px;
+    background-color: burlywood;
+    border-radius: 20px;
+}
+
+.but:hover {
+    color: azure;
+}
+
+#game {
+    border: solid white;
+    right: 40%;
+    display: inline-block;
+    position: absolute;
+    right: 45%%;
+    left: 40%;
+    top: 20%;
+    
+}
+
+.ret {
+    position: absolute;
+    left: 80%;
+    top: 10px;
+    background-color: burlywood;
+    border-radius: 20px;
+}
+
+.new {
+    position: absolute;
+    left: 20%;
+    top: 10px;
+}
+
+.ret:hover {
+    color: azure;
+}
+
+.panelMagic {
+    text-align: center;
+}
+
+#panelMagic {
+    text-align: center;
+    margin: 10px;
+}
+
+
+#infoMagic {
+    text-align: center;
+}
+
+.inf {
+    margin: 100px;
+}
