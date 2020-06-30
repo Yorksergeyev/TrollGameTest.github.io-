@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase|Play&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="errorTel">Для удобства игры на телефоне переверните устройство горизонтально.
+        <button class="but" id="closeTel" style="text-align: center;">Ok</button>
+    </div>
     <div class="wrapper">
     <div class="nav1">
         <a class="new"href="boss.html">        <button class="but">Выбор орка</button></a>
@@ -20,7 +23,7 @@
     <div class="image">
         <img src="images/gente.jpg" class='gente'> 
         <img src="images/dead.jpg" class='dead_g'>       
-        <div style="width: 400px;">
+        <div class="pole">
             <div id="game">Вы заметили троля! <br> <button class="but" id="start" style="margin-top: 20px;">Начать бой</button></div>
             <div id="gameMag"></div>
         </div>
@@ -51,4 +54,9 @@
     <script src="./dist/code.bundle.js"></script>
     
 </body>
+<script>
+    document.getElementById('closeTel').onclick = function(){
+        document.querySelector('.errorTel').style.display = 'none';
+    }
+</script>
 </html>
