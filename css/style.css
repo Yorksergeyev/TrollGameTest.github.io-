@@ -155,6 +155,9 @@ body {
     .but {
         font-size: 25px;
     }
+    .image {
+        height: 200px;
+    }
     .troll {
         width: 200px;
         height: 250px;
@@ -163,9 +166,25 @@ body {
         width: 200px;
         height: 250px;
     }
+    .dead_g {
+        width: 200px;
+        height: 250px;
+    }
+    .dead_t {
+        width: 200px;
+        height: 250px;
+    }
     .pole{
         width: 200px;
         font-size: 20px;
+        height: 200px;
+    }
+    #game {
+        margin-top: 4px;
+        
+    }
+    #gameMag {
+        margin-top: 2px;
     }
     .ret {
         margin-left: 200px;
