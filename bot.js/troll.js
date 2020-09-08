@@ -9,6 +9,8 @@ let a_g = atk_g;
 let i1 = HP_TR[Math.floor(Math.random() * HP_TR.length)];
 let m1 = 100; // Мана врага
 
+let raund = 0;
+
 
 // Финал игры
 function final() {
@@ -76,6 +78,7 @@ HPMP();
 // Атака
 document.getElementById('ataka').onclick = function() {
     if (i>0 && i1>0) {
+        raund += 1
         // Мини рандом для того что бы узнать что делает враг, блокирует или атакует
         let r = Math.random();
         let r1 = Math.random();
@@ -90,6 +93,8 @@ document.getElementById('ataka').onclick = function() {
                     HPMP();
                     game.innerHTML = ('Пробив защиту троля вы нанесли <strong>'+z+'</strong> урона');
                     gameMag.innerHTML = ('');
+                    alpha.insertAdjacentHTML('afterend', '<p>Пробив защиту троля вы нанесли <strong>'+z+'</strong> урона</p>');
+                    alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
                     
                 }
                 else if (z<=z1){
@@ -98,6 +103,8 @@ document.getElementById('ataka').onclick = function() {
                     HPMP();
                     game.innerHTML = ('Троль блокировал <strong>'+z+'</strong> урона');
                     gameMag.innerHTML = ('');
+                    alpha.insertAdjacentHTML('afterend', '<p>Троль блокировал <strong>'+z+'</strong> урона</p>');
+                    alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
                 }
         }
         // Враг и вы бьете друг друга
@@ -110,6 +117,8 @@ document.getElementById('ataka').onclick = function() {
             HPMP();
             game.innerHTML = ('Вы нанесли <strong>' +z1+ '</strong> урона тролю <br> <br> Вам нанесли <strong>'+z+ '</strong> урона'); 
             gameMag.innerHTML = ('');
+            alpha.insertAdjacentHTML('afterend', '<p>Вы нанесли <strong>' +z1+ '</strong> урона тролю <br> <br> Вам нанесли <strong>'+z+ '</strong> урона</p>');
+            alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
     }
         }
     
@@ -119,6 +128,7 @@ document.getElementById('ataka').onclick = function() {
 
      // Функция блока 
      function block(){
+        raund += 1
         if (i>0 && i1>0) {
             // Вероятность того что враг займет оборону
             let r = Math.random();
@@ -132,6 +142,8 @@ document.getElementById('ataka').onclick = function() {
                     HPMP();
                     gameMag.innerHTML = ('');
                     game.innerHTML = ('Троль пробив блок нанес <strong>'+z+'</strong> урона');
+                    alpha.insertAdjacentHTML('afterend', '<p>Троль пробив блок нанес <strong>'+z+'</strong> урона</p>');
+                    alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
                 }
                     else {
                     z += a_g
@@ -139,12 +151,16 @@ document.getElementById('ataka').onclick = function() {
                     HPMP();
                     gameMag.innerHTML = ('');
                     game.innerHTML = ('Вы блокировали <strong>'+z+'</strong> урона');
+                    alpha.insertAdjacentHTML('afterend', '<p>Вы блокировали <strong>'+z+'</strong> урона</p>');
+                    alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
                 }
         }
             // Враг выбрал блок
             else if (r<0.1) {
                 gameMag.innerHTML = ('');
                 game.innerHTML = ('Троль и вы заняли оборонительные стойки');
+                alpha.insertAdjacentHTML('afterend', '<p>Троль и вы заняли оборонительные стойки</p>');
+                alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
             }
         
         final()
@@ -160,12 +176,15 @@ document.getElementById('ataka').onclick = function() {
     // Нажатие кнопки книга магии
      document.getElementById('magic').onclick = function () {
     if (i>0 && i1>0 && m>0 && m1>0) {
+        raund += 1
             document.querySelector('.but_mag').style.display = 'flex';
             let z = Math.ceil(Math.random() * 50);
             i -= z
             HPMP();
             game.innerHTML = ('Вы открыли книгу магии <p> Воспользовавшись этим троль нанес <strong>'+z+ ' </strong> урона'); 
             document.getElementById('magic').hidden = true; 
+            alpha.insertAdjacentHTML('afterend', '<p>Вы открыли книгу магии <p> Воспользовавшись этим троль нанес <strong>'+z+ ' </strong> урона</p>');
+            alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
         
         };
         
@@ -175,6 +194,7 @@ document.getElementById('ataka').onclick = function() {
     // Магия восстановления жизни
     document.getElementById('heal').onclick = function heal() {
     if (m>49) {
+        raund += 1
         let r = Math.random(); // Вероятность того что магия не сработает
             if (r>=0.5){
                 let z = Math.ceil(Math.random() * 50);
@@ -183,12 +203,16 @@ document.getElementById('ataka').onclick = function() {
                 HPMP();
                 game.innerHTML = ('Удачно! Вы востановили <strong>'+z+'</strong> жизней');
                 gameMag.innerHTML = ('');  
+                alpha.insertAdjacentHTML('afterend', '<p>Удачно! Вы востановили <strong>'+z+'</strong> жизней</p>');
+                alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
             }
         else {
             m-= 50
                HPMP();
                 game.innerHTML = ('Неудачно!');
                 gameMag.innerHTML = ('');
+                alpha.insertAdjacentHTML('afterend', '<p>Неудачно!</p>');
+                alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
         }
 
     }
@@ -201,6 +225,7 @@ document.getElementById('ataka').onclick = function() {
 // Огненный шар
 document.getElementById('fire').onclick = function fire() {
         if (i>0 && i1>0 && m>99 && m1>99) {
+            raund += 1
             let r = Math.random(); // Вероятность того что магия не сработает
             if (r>=0.7){
                 let z = Math.ceil(Math.random() * (150-50) + 50);
@@ -209,6 +234,8 @@ document.getElementById('fire').onclick = function fire() {
                 HPMP();
                 block();
                 gameMag.innerHTML = ('Удачно! Огненым шаром вы нанесли <strong>' +z+ '</strong> урона тролю');
+                alpha.insertAdjacentHTML('afterend', '<p>Удачно! Огненым шаром вы нанесли <strong>' +z+ '</strong> урона тролю</p>');
+                alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
                 }
             else {
                 let z = Math.ceil(Math.random() * (150-50) + 50);
@@ -217,6 +244,8 @@ document.getElementById('fire').onclick = function fire() {
                 HPMP();
                 block();
                 gameMag.innerHTML = ('Неудачно! Огненым шаром вы нанесли <strong>' +z+ '</strong> урона себе');
+                alpha.insertAdjacentHTML('afterend', '<p>Неудачно! Огненым шаром вы нанесли <strong>' +z+ '</strong> урона себе</p>');
+                alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
             }
 
         
@@ -231,6 +260,7 @@ document.getElementById('fire').onclick = function fire() {
     // Антимагия
     document.getElementById('anti').onclick = function anti() {
         if (m>24 && m1>1) {
+        raund += 1
         let r = Math.random(); // Вероятность того что магия не сработает
             if (r>=0.7){
                 let z = Math.ceil(Math.random() * 50);
@@ -240,6 +270,8 @@ document.getElementById('fire').onclick = function fire() {
                 HPMP();
                 block();
                 gameMag.innerHTML = ('Вы удачно прочитали заклинание и забрали <strong>'  +z+  '</strong> маны'); 
+                alpha.insertAdjacentHTML('afterend', '<p>Вы удачно прочитали заклинание и забрали <strong>'  +z+  '</strong> маны</p>');
+                alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
             }
         else {
             let z = Math.ceil(Math.random() * 50);
@@ -248,6 +280,8 @@ document.getElementById('fire').onclick = function fire() {
                HPMP();
                 block();
                 gameMag.innerHTML = ('Вы неудачно прочитали заклинание, но смогли сжечь <strong>' +z+ '</strong> маны противнику');
+                alpha.insertAdjacentHTML('afterend', '<p>Вы неудачно прочитали заклинание, но смогли сжечь <strong>' +z+ '</strong> маны противнику</p>');
+                alpha.insertAdjacentHTML('afterend', '<strong>Раунд '+raund+'</strong>');
 
     }
         }

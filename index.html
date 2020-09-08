@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="./css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase|Play&display=swap" rel="stylesheet">
+    <style>
+        #storyBtlpanel {
+            display: none;
+            font-family: var(--game);
+        }
+    </style>
 </head>
 <body>
     <div class="errorTel">Для удобства игры на телефоне переверните устройство горизонтально.
@@ -49,14 +55,31 @@
             <div style="display: flex; margin-left: 80px;">Защита:</div>
         </div> -->
         <div style="margin-top: 30px;">alpha 3.1</div>
+    </div>
+    <div class="panelMagic" style="margin-top: 10px;">
+        <button class="but" id="storyBtl">История битвы</button>
+        <div id="storyBtlpanel">
+             <div id="alpha"></div>
         </div>
     </div>
-    <script src="./dist/code.bundle.js"></script>
-    
+    </div>
+    <script src="./dist/code.bundle.js"></script>   
 </body>
 <script>
     document.getElementById('closeTel').onclick = function(){
         document.querySelector('.errorTel').style.display = 'none';
     }
+    document.getElementById('storyBtl').onclick = function(){
+                //Если элемент с id-шником element_id существует
+                if (document.getElementById('storyBtlpanel')) { 
+                    //Записываем ссылку на элемент в переменную obj
+                    let obj = document.getElementById('storyBtlpanel'); 
+                    //Если css-свойство display не block, то: 
+                    if (obj.style.display != "block") { 
+                        obj.style.display = "block"; //Показываем элемент
+                    }
+                    else obj.style.display = "none"; //Скрываем элемент
+                }
+            }   
 </script>
 </html>
